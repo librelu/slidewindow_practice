@@ -17,40 +17,42 @@ func main() {
 		totalResult[coordinate] = result
 		findPossible(left, coordinate, t1)
 	}
-	if result, left := getFourSames(slice); result != nil {
-		coordinate := "1"
-		totalResult[coordinate] = result
-		t2 := tree.AddBranch(fmt.Sprintf("+%v", result))
-		findPossible(left, coordinate, t2)
-	}
 
 	if result, left := getThreeSames(slice); result != nil {
-		coordinate := "2"
+		coordinate := "1"
 		totalResult[coordinate] = result
 		t3 := tree.AddBranch(fmt.Sprintf("+%v", result))
 		findPossible(left, coordinate, t3)
 	}
+
+	if result, left := getFourSames(slice); result != nil {
+		coordinate := "2"
+		totalResult[coordinate] = result
+		t2 := tree.AddBranch(fmt.Sprintf("+%v", result))
+		findPossible(left, coordinate, t2)
+	}
 	fmt.Println(tree.String())
+	fmt.Println(totalResult)
 
 }
 func findPossible(slice []int, coordinate string, tree treeprint.Tree) {
 	if result, left := getOrdering(slice); result != nil {
-		coordinate = coordinate + "-0"
-		totalResult[coordinate] = result
+		coordinate1 := coordinate + "-0"
+		totalResult[coordinate1] = result
 		t1 := tree.AddBranch(fmt.Sprintf("+%v", result))
-		findPossible(left, coordinate, t1)
+		findPossible(left, coordinate1, t1)
 	}
 	if result, left := getThreeSames(slice); result != nil {
-		coordinate = coordinate + "-1"
-		totalResult[coordinate] = result
+		coordinate2 := coordinate + "-1"
+		totalResult[coordinate2] = result
 		t2 := tree.AddBranch(fmt.Sprintf("+%v", result))
-		findPossible(left, coordinate, t2)
+		findPossible(left, coordinate2, t2)
 	}
 	if result, left := getFourSames(slice); result != nil {
-		coordinate = coordinate + "-2"
-		totalResult[coordinate] = result
+		coordinate3 := coordinate + "-2"
+		totalResult[coordinate3] = result
 		t3 := tree.AddBranch(fmt.Sprintf("+%v", result))
-		findPossible(left, coordinate, t3)
+		findPossible(left, coordinate3, t3)
 	}
 }
 func getThreeSames(slice []int) ([]int, []int) {
