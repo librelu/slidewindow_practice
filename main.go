@@ -59,7 +59,7 @@ func getThreeSames(slice []int) ([]int, []int) {
 		for p2 < len(slice) {
 			if slice[p1] == slice[p2] {
 				if (p2 - p1) == 2 {
-					return slice[p1 : p2+1], slice[p2:]
+					return slice[p1 : p2+1], slice[p2+1:]
 				}
 			} else {
 				break
@@ -75,7 +75,7 @@ func getFourSames(slice []int) ([]int, []int) {
 		for p2 < len(slice) {
 			if slice[p1] == slice[p2] {
 				if (p2 - p1) == 3 {
-					return slice[p1 : p2+1], slice[p2:]
+					return slice[p1 : p2+1], slice[p2+1:]
 				}
 			} else {
 				break
